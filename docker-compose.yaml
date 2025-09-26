@@ -1,0 +1,41 @@
+services:
+  frankenphp:
+    image: dunglas/frankenphp:latest
+    container_name: frankenphp
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./wwwroot:/wwwroot
+      - ./caddy/caddyfile:/etc/frankenphp/Caddyfile:ro
+      - ./caddy/conf.d:/etc/frankenphp/Caddyfile.d:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - mysql
+      - redis
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+    volumes:
+      - ./mysql/conf.d:/etc/mysql/conf.d:ro
+      - mysqldata:/var/lib/mysql
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    expose:
+      - "6379"
+
+volumes:
+    mysqldata:
+    caddy_data:
+    caddy_config:

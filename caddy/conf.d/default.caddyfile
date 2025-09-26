@@ -1,0 +1,13 @@
+localhost:80 {
+    root /wwwroot/default
+	encode zstd br gzip
+	
+	php_server {
+        root /wwwroot/default
+        worker {
+            file index.php
+            num 2
+            watch /wwwroot/default/*.php
+        }
+    }
+}
