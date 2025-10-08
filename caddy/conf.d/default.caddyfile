@@ -1,5 +1,5 @@
 localhost:80 {
-    root /wwwroot/default
+    root * /wwwroot/default
 	encode zstd br gzip
 	
 	php_server {
@@ -7,7 +7,6 @@ localhost:80 {
         worker {
             file index.php
             num 2
-            watch /wwwroot/default/*.php
         }
     }
 }

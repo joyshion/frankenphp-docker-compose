@@ -5,6 +5,7 @@
         php_ini upload_max_filesize 8M
         php_ini post_max_size 8M
 	}
+    auto_https off
 }
 
 import Caddyfile.d/*.caddyfile
