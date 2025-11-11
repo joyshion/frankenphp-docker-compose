@@ -8,4 +8,10 @@
     auto_https off
 }
 
-import Caddyfile.d/*.caddyfile
+localhost:80 {
+    root * /wwwroot/default
+    php_server {
+        worker /wwwroot/default/index.php
+    }
+    file_server
+}
