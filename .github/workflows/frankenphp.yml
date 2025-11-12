@@ -3,7 +3,7 @@ name: php-frankenphp 8.4
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
 
 jobs:
   docker:
