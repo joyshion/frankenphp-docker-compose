@@ -18,7 +18,7 @@ services:
       SERVER_NAME: ":80"
     volumes:
       - ./wwwroot:/wwwroot
-      - ./caddy/Caddyfile:/etc/frankenphp/Caddyfile:ro
+      - ./caddy/caddyfile:/etc/frankenphp/Caddyfile:ro
       - caddy_data:/data
       - caddy_config:/config
     depends_on:
